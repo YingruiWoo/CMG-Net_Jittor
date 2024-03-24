@@ -188,7 +188,7 @@ class Network(nn.Module):
 
             weight_loss = (true_weight - pred_weights).pow(2).mean()
         
-        regularizer_loss = 0.1 * nn.MSELoss()(trans * trans.permute(0, 2, 1),
+        regularizer_loss = 0.1 * nn.MSELoss()(trans @ trans.permute(0, 2, 1),
                                               init.eye(3).unsqueeze(0).repeat(
                                               trans.size(0), 1, 1))
 
